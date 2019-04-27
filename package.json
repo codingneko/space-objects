@@ -1,0 +1,30 @@
+{
+  "name": "space-collisions",
+  "version": "0.0.1",
+  "description": "tracks objects in collision trajectory in space",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "node-fetch": "^2.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingneko/space-collisions.git"
+  },
+  "author": "CodingNeko",
+  "license": "CC-BY-NC-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/codingneko/space-collisions/issues"
+  },
+  "homepage": "https://collisions.codingneko.com"
+}

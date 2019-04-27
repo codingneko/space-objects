@@ -1,0 +1,17 @@
+<h1>Objects</h1>
+
+<ul class="list-group mt-4 mb-4">
+    <% for (var object of data) { %>
+      <li class="list-group-item">
+          <h4> <a href="/object/<%= object.INTLDES %>"><%= object.OBJECT_NAME %></a></h4>
+          <pre class="mb-3"> 
+            Type: <%= object.OBJECT_TYPE.toLowerCase() %> 
+            International object designator: <%= object.INTLDES %>
+            TLE line 1: <%= object.TLE_LINE1 %>
+            TLE line 2: <%= object.TLE_LINE2 %>
+          </pre>
+      </li>
+    <% } %>
+</ul>
+
+<%- include('../inc/pagination'); %>
