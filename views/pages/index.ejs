@@ -1,5 +1,8 @@
 <h1>Objects</h1>
 
+<%- include('../inc/search')%>
+
+<% if(typeof data != 'string'){%>
 <ul class="list-group mt-4 mb-4">
     <% for (var object of data) { %>
       <li class="list-group-item">
@@ -13,5 +16,8 @@
       </li>
     <% } %>
 </ul>
+<%} else {%>
+  <p class="card mt-4"> No data found </p>
+<% } %>
 
 <%- include('../inc/pagination'); %>
