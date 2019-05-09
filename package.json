@@ -7,15 +7,19 @@
     "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "shelljs": "^0.8.3",
+    "tle": "^1.2.3"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"
   },
   "scripts": {
+    "build": "./updateScript.sh",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "node-fetch": "^2.4.0"
+    "node-fetch": "^2.4.0",
+    "update": "./updateScript.sh"
   },
   "repository": {
     "type": "git",
