@@ -32,7 +32,7 @@ module.exports = function(router, data){
     router.get('/object/:iod', (req, res) => {
         var result = [];
         for (var object of data) {
-            if (object.INTLDES == req.params.iod){
+            if (object.id == req.params.iod){
     
                 result.push(object);
             }

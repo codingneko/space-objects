@@ -20,7 +20,7 @@ function search (terms, array, options){
     var termsSplit = terms.split(' ');
 
     for (const object of array) {
-        var name = object.OBJECT_NAME.toLowerCase();
+        var name = object.name.toLowerCase();
                
         if(options.strict){
             if(name.indexOf(terms) != -1){
