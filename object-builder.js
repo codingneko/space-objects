@@ -15,6 +15,10 @@ for (var object of data) {
     object.type = type;
     object.tle = tle;
     objectArray.push(object);
+
+    let craftedDate = object.id.slice(0,2);
+    craftedDate = craftedDate > 57 ? '19' + craftedDate: '20' + craftedDate;
+    object.launchDate = craftedDate;
 }
 
 module.exports = objectArray;
