@@ -2,11 +2,11 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const ejsLayouts = require('express-ejs-layouts');
-const routes = require('./routes');
-const api = require('./api');
+const routes = require('./routers/routes');
+const api = require('./routers/api');
 const app = express();
 const port = process.env.PORT || 8080;
-const data = require('./object-builder');
+const data = require('./controllers/object-builder');
 const shell = require('shelljs');
 
 //initual data update
