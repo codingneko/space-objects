@@ -1,4 +1,5 @@
 const search = require('../controllers/search');
+const UserController = require('../controllers/UserController');
 
 module.exports = function(router, data){
     router.get('/', (req, res) => {
@@ -49,5 +50,17 @@ module.exports = function(router, data){
 
     router.get('/register', (req, res) => {
         res.render('pages/register');
+    });
+
+    router.post('/auth', (req, res) => {
+        let result = {
+            status: 1
+        }
+
+        UserController.save(req.body);
+
+        result.status = 0;
+
+        res.json(result);
     });
 };

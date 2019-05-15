@@ -8,6 +8,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 const data = require('./controllers/object-builder');
 const shell = require('shelljs');
+const BodyParser = require('body-parser');
 
 //initual data update
 shell.exec('./updateScript.sh').stdout;
@@ -16,6 +17,8 @@ shell.exec('./updateScript.sh').stdout;
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(ejsLayouts);
+app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({ extended: true }));
 
 //define render engine (ejs)
 app.set('views', path.join(__dirname, 'views'));
