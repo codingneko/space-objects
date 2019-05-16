@@ -26,5 +26,20 @@ var app = {
     },
     setCookie: (key, value) => {
         document.cookie = key + '=' + value;
+    },
+    logout: () => {
+        document.cookie = 'user=';
     }
 }
+
+$(document).ready(()=>{
+    let logoutButton = document.getElementById('logout');
+
+    if(!typeof logoutButton == null){
+        logoutButton.addEventListener('click', (action) => {
+            action.preventDefault();
+            app.logout();
+            console.log('logged out');
+        });
+    }
+});

@@ -13,6 +13,7 @@ document.getElementById('submit').addEventListener('click', (action) => {
         if (UserInput.password1.length >= 8) {
             UserInput.password = sha1(UserInput.password1);
             delete UserInput.password1;
+            UserInput.request = 'register';
             fetch('/auth', {
                 method: 'POST',
                 cache: 'no-cache',

@@ -27,10 +27,17 @@ module.exports.save = function (data) {
     return userId;
 }
 
-module.exports.login = function(data) {
+module.exports.login = function(data) {    
+    let user = db.get('users').find({
+        name: data.userName,
+        password: data.password
+    }).value();
 
+    if(typeof user != undefined) return user;
 }
 
-module.exports.get = function(data) {
-
+module.exports.getCurrentUser = function(data) {
+    if(data != ''){
+        return db.get('users').find({ id: data }).value().name;
+    }
 }

@@ -1,4 +1,19 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "qRnMjYGS8",
+      "name": "CodingNeko",
+      "password": "21e82d5d4076e3b76b7b8b2bba15546821ded979",
+      "email": "ivocarbajo@gmail.com",
+      "isAdmin": false
+    },
+    {
+      "id": "qHTC-w8Gu",
+      "name": "asd",
+      "password": "21e82d5d4076e3b76b7b8b2bba15546821ded979",
+      "email": "ivocarbajo@gmail.com",
+      "isAdmin": false
+    }
+  ],
   "subscriptions": []
 }

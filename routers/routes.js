@@ -26,7 +26,8 @@ module.exports = function(router, data){
             'page': req.query.p || 1,
             'amount': amount,
             'query': req.query.q || '',
-            'location': req.header('Location') || '/'
+            'location': req.header('Location') || '/',
+            'user':  UserController.getCurrentUser(req.cookies.user)
         });
     });
     
@@ -40,34 +41,44 @@ module.exports = function(router, data){
         }
         res.render('pages/object', {
             "data": result,
-            "referer": req.header('Referer') || '/'
+            "referer": req.header('Referer') || '/',
+            'user':  UserController.getCurrentUser(req.cookies.user)
         });
     });
 
     router.get('/login', (req, res) => {
-        res.render('pages/login');
+        res.render('pages/login', {
+            'user':  UserController.getCurrentUser(req.cookies.user)
+        });
     });
 
     router.get('/register', (req, res) => {
-        res.render('pages/register');
+        res.render('pages/register', {
+            'user':  UserController.getCurrentUser(req.cookies.user)
+        });
     });
 
     router.post('/auth', (req, res) => {
-        let result = {
-            status: 1,
-            userId: 0
-        }
 
-        result.userId = UserController.save(req.body);
-        
-        if(result.userId != undefined){
-            console.log(result.userId + 'has been added to the database');
-            result.status = 0;
-        }else{
-            result.status = 1;
+        if(req.body.request == 'register'){
+            let result = {
+                status: 1,
+                userId: 0
+            }
+    
+            result.userId = UserController.save(req.body);
+            
+            if(result.userId != undefined){
+                console.log(result.userId + 'has been added to the database');
+                result.status = 0;
+            }else{
+                result.status = 1;
+            }
+            
+    
+            res.json(result);
+        }else if(req.body.request == 'register'){
+            console.log('trying to log in');
         }
-        
-
-        res.json(result);
     });
 };
