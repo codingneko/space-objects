@@ -26,15 +26,20 @@ document.getElementById('submit').addEventListener('click', (action) => {
                 // handle result displaying here
                 if(data.status === 0){
                     app.notify.success('Welcome, ' + UserInput.userName + '. You\'ll be redirected shortly.');
-                    document.head.append('<meta http-equiv="refresh" content="2; URL=\'/\'" />');
+                    app.setCookie('user', data.userId);
+                    window.location.href = '/';
+                }else{
+                    app.notify.error('Something went wrong, try contacting support.');
                 }
             });
         } else {
-            app.notify.error('Your password needs to be at least 8 characters long', 'Password is too weak')
+            app.notify.warning('Your password needs to be at least 8 characters long', 'Password is too weak')
         }
     }else{
-        app.notify.error('passwords do not match');
+        app.notify.warning('passwords do not match');
     }
+
+    setTimeout(app.notify.clearAlerts, 3000);
 });  
 
 function sha1 (msg) {

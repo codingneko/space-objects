@@ -54,12 +54,19 @@ module.exports = function(router, data){
 
     router.post('/auth', (req, res) => {
         let result = {
-            status: 1
+            status: 1,
+            userId: 0
         }
 
-        UserController.save(req.body);
-
-        result.status = 0;
+        result.userId = UserController.save(req.body);
+        
+        if(result.userId != undefined){
+            console.log(result.userId + 'has been added to the database');
+            result.status = 0;
+        }else{
+            result.status = 1;
+        }
+        
 
         res.json(result);
     });

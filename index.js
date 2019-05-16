@@ -11,7 +11,7 @@ const shell = require('shelljs');
 const BodyParser = require('body-parser');
 
 //initual data update
-shell.exec('./updateScript.sh').stdout;
+//shell.exec('./updateScript.sh').stdout;
 
 //middleware
 app.use(cors());

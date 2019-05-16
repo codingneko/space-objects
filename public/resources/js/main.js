@@ -2,8 +2,8 @@ var app = {
     notify: {
         warning: (text, title = '') => {
             $(".notification-container").append('<div class="alert alert-warning alert-dismissible">' + 
-            '<button type="button" class="close" data-dismiss="alert">&times;</button>' + 
-            '<strong>' + title + ' </strong>' + text + '</div>');
+                '<button type="button" class="close" data-dismiss="alert">&times;</button>' + 
+                '<strong>' + title + ' </strong>' + text + '</div>');
         },
         info: (text, title = '') => {
             $(".notification-container").append('<div class="alert alert-primary alert-primary">' + 
@@ -19,6 +19,12 @@ var app = {
             $(".notification-container").append('<div class="alert alert-danger alert-dismissible">' + 
             '<button type="button" class="close" data-dismiss="alert">&times;</button>' + 
             '<strong>' + title + ' </strong>' + text + '</div>');
+        },
+        clearAlerts:() => {
+            $(".alert").remove();
         }
+    },
+    setCookie: (key, value) => {
+        document.cookie = key + '=' + value;
     }
 }
