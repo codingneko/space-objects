@@ -27,7 +27,7 @@ module.exports = function(router, data){
             'amount': amount,
             'query': req.query.q || '',
             'location': req.header('Location') || '/',
-            'user':  UserController.getCurrentUser(req.cookies.user)
+            'user':  UserController.getCurrentUser(req.cookies.user).name
         });
     });
     
@@ -42,19 +42,19 @@ module.exports = function(router, data){
         res.render('pages/object', {
             "data": result,
             "referer": req.header('Referer') || '/',
-            'user':  UserController.getCurrentUser(req.cookies.user)
+            'user':  UserController.getCurrentUser(req.cookies.user).name
         });
     });
 
     router.get('/login', (req, res) => {
         res.render('pages/login', {
-            'user':  UserController.getCurrentUser(req.cookies.user)
+            'user':  UserController.getCurrentUser(req.cookies.user).name
         });
     });
 
     router.get('/register', (req, res) => {
         res.render('pages/register', {
-            'user':  UserController.getCurrentUser(req.cookies.user)
+            'user':  UserController.getCurrentUser(req.cookies.user).name
         });
     });
 
@@ -63,13 +63,13 @@ module.exports = function(router, data){
         if(req.body.request == 'register'){
             let result = {
                 status: 1,
-                userId: 0
+                user: 0
             }
     
-            result.userId = UserController.save(req.body);
+            result.user = UserController.save(req.body);
             
-            if(result.userId != undefined){
-                console.log(result.userId + 'has been added to the database');
+            if(result.user != undefined){
+                console.log(result.user.name + 'has been added to the database');
                 result.status = 0;
             }else{
                 result.status = 1;
@@ -77,8 +77,16 @@ module.exports = function(router, data){
             
     
             res.json(result);
-        }else if(req.body.request == 'register'){
-            console.log('trying to log in');
+        }else if(req.body.request == 'login'){
+            let result = {
+                status: 1,
+                user: 0
+            }
+
+            result.user = UserController.login(req.body);
+            if(!result.user)result.status = 403; else result.status = 0;
+            console.log(result.user.name + 'logged in');
+            res.json(result);
         }
     });
 };

@@ -2,16 +2,17 @@
     <h3>Login</h3>
     <form action="/auth" method="POST">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Email" value="" />
+            <input type="text" class="form-control" placeholder="Your user name" value="" id="userName" />
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Your Password" value="" />
+            <input type="password" class="form-control" placeholder="Your Password" value="" id="password" />
         </div>
         <div class="form-group">
-            <input type="submit" class="btn-info btn" value="Login" />
+            <input type="submit" class="btn-info btn" value="Login" id="submit" />
         </div>
         <div class="form-group">
             Don't have an account? <a href="/register">Register one</a>
         </div>
     </form>
 </div>
+<script src="resources/js/login.js"></script>

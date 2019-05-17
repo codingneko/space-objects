@@ -14,17 +14,18 @@ db.defaults({
 
 module.exports.save = function (data) {
     data.isAdmin = false;
-    userId = shortid.generate();
-    
-    db.get('users').push({
+    let userId = shortid.generate();
+    let user = db.get('users').push({
         id: userId,
         name: data.userName,
         password: data.password,
         email: data.email,
         isAdmin: data.isAdmin
-    }).write().id;
+    }).find({
+        id: userId
+    }).write();
 
-    return userId;
+    return user;
 }
 
 module.exports.login = function(data) {    
@@ -33,11 +34,19 @@ module.exports.login = function(data) {
         password: data.password
     }).value();
 
-    if(typeof user != undefined) return user;
+    if(typeof user == 'undefined'){
+        return false;
+    }
+
+    return user;;
 }
 
 module.exports.getCurrentUser = function(data) {
     if(data != ''){
-        return db.get('users').find({ id: data }).value().name;
+        return db.get('users').find({ id: data }).value();
+    }else{
+        return {
+            name: undefined
+        }
     }
 }
