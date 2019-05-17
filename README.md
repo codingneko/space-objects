@@ -1,4 +1,4 @@
-# space-objects
+# Space-objects
 Space objects is a catalog of objects in earth orbit with a free to use API built in Express with Ejs.
 
 # Installation

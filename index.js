@@ -2,20 +2,25 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const ejsLayouts = require('express-ejs-layouts');
-const routes = require('./routes');
-const api = require('./api');
+const routes = require('./routers/routes');
+const api = require('./routers/api');
 const app = express();
 const port = process.env.PORT || 8080;
-const data = require('./object-builder');
+const data = require('./controllers/object-builder');
 const shell = require('shelljs');
+const BodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 //initual data update
-shell.exec('./updateScript.sh').stdout;
+//shell.exec('./updateScript.sh').stdout;
 
 //middleware
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(ejsLayouts);
+app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 //define render engine (ejs)
 app.set('views', path.join(__dirname, 'views'));

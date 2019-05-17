@@ -24,3 +24,24 @@
     width: 20px;
     height: 20px;
 }
+
+.fixed-top-nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index: 2;
+}
+
+.main{
+    margin-top:80px !important;
+}
+
+.dropdown-container{
+    position:fixed;
+    top: 60px;
+    right:170px;
+}
+
+.notification-container{
+    margin-top:65px;
+}
