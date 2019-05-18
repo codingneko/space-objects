@@ -42,7 +42,7 @@ module.exports.login = function(data) {
 }
 
 module.exports.getCurrentUser = function(data) {
-    if(typeof data == 'null'){
+    if(typeof data != 'null'){
         return db.get('users').find({ id: data }).value();
     }else{
         return {
