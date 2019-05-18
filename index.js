@@ -12,7 +12,7 @@ const BodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 //initual data update
-//shell.exec('./updateScript.sh').stdout;
+shell.exec('./updateScript.sh').stdout;
 
 //middleware
 app.use(cors());

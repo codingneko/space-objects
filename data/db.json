@@ -1,19 +1,4 @@
 {
-  "users": [
-    {
-      "id": "Xt4qD_XzY",
-      "name": "CodingNeko",
-      "password": "21e82d5d4076e3b76b7b8b2bba15546821ded979",
-      "email": "ivocarbajo@gmail.com",
-      "isAdmin": false
-    },
-    {
-      "id": "Vdi1heX38",
-      "name": "Ivo Carbajo",
-      "password": "56e44680d9eca0261df8d1534eb1f151a50dd465",
-      "email": "ivocarbajo@gmail.com",
-      "isAdmin": false
-    }
-  ],
+  "users": [],
   "subscriptions": []
 }
