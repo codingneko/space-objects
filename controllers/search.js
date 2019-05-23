@@ -12,30 +12,40 @@ module.exports = search;
 
 function search (terms, array, options){
     options = options || {
+        byId: false,
         strict: false
     };
     var result = [];
     
-    terms = terms.toLowerCase();
-    var termsSplit = terms.split(' ');
-
-    for (const object of array) {
-        var name = object.name.toLowerCase();
-               
-        if(options.strict){
-            if(name.indexOf(terms) != -1){
+    if(options.byId){
+        for(object of array){
+            if(object.id == terms){
                 result.push(object);
             }
-        }else{
-            var found = 0;
-            for (const term of termsSplit) {
-                if(name.indexOf(term) != -1){
-                    found++;
+        }
+    }else{
+        terms = terms.toLowerCase();
+        var termsSplit = terms.split(' ');
+
+        for (const object of array) {
+            var name = object.name.toLowerCase();
+                
+            if(options.strict){
+                if(name.indexOf(terms) != -1){
+                    result.push(object);
                 }
+            }else{
+                var found = 0;
+                for (const term of termsSplit) {
+                    if(name.indexOf(term) != -1){
+                        found++;
+                    }
+                }
+                if(found > termsSplit.length-1)result.push(object);
             }
-            if(found > termsSplit.length-1)result.push(object);
         }
     }
+    
     
     return result;
 }

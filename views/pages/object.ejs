@@ -1,6 +1,7 @@
-<a href="<%= referer %>" class="btn btn-primary mb-4">Back to catalog</a>
+<a href="/" class="btn btn-primary mb-4">Back to catalog</a>
 
 <% for (const object of data){ %>
+<a href="/user/<%= sub %>/<%=object.id%>" class="btn btn-primary mb-4"><%= sub %></a> 
 <div class="card">
     <h4 class="ml-4 mt-4"> <%= object.name %> </h4>
     <pre class="mb-3"> 

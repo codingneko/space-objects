@@ -61,4 +61,7 @@ typings/
 .next
 
 #database
-./data/db.json
+db.json
+
+#cookie file
+cookies.txt
