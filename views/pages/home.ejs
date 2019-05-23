@@ -13,6 +13,8 @@
           </li>
         <% } %>
     </ul>
-<%} else {%>
+<%} else if(typeof user != 'undefined'){%>
     <p class="card mt-4"> You have no subscriptions </p>
+<% } else {%>
+    <div class="card mt-4"> Please log in before trying to view your subscriptions <a href="/login" style="display: inline-block">log-in</a> </div>
 <% } %>

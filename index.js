@@ -20,7 +20,7 @@ const password = process.env.ST_PASSWORD;
 console.log('Attempting to connect with the following credentials');
 console.log('username: ' + username);
 console.log('password: ' + password);
-//shell.exec('./updateScript.sh ' + username + ' ' + password).stdout;
+shell.exec('./updateScript.sh ' + username + ' ' + password).stdout;
 
 const data = require('./controllers/object-builder');
 

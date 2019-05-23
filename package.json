@@ -1,6 +1,6 @@
 {
   "name": "space-objects",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.0",
   "description": "tracks objects in collision trajectory in space",
   "main": "index.js",
   "dependencies": {

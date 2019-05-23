@@ -70,7 +70,8 @@ module.exports = function(router, data){
         let user = UserController.getCurrentUser(req.cookies.user);
         res.render('pages/settings', {
             "user":  user.name,
-            "userId": user.id
+            "userId": user.id,
+            "email": user.email
         });
     });
 
@@ -107,9 +108,18 @@ module.exports = function(router, data){
     });
 
     router.post('/user/settings/handle', (req, res) => {
-        let password = req.body.password;
-        let username = req.body.username;
-        let email = req.body.email;
+        if(req.body.password != req.body.passwordConfirm){
+            res.redirect('/user/settings');
+        }
+
+        UserController.update({
+            userName: req.body.username,
+            password: req.body.password,
+            email: req.body.email,
+            userId: req.cookies.user
+        });
+
+        res.redirect('/');
     });
 
     router.get('/user/home', (req, res) =>  {

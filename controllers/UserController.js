@@ -29,6 +29,19 @@ module.exports.save = function (data) {
     return user;
 }
 
+module.exports.update = (data) => {
+    let user = db.get('users').find({id: data.userId}).assign({
+        name: data.userName,
+        password: require('./crypto').sha1(data.password),
+        email: data.email,
+        isAdmin: data.isAdmin
+    }).find({
+        id: data.userId
+    }).write();
+
+    return user;
+}
+
 module.exports.login = function(data) {    
     let user = db.get('users').find({
         name: data.userName,
