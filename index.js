@@ -6,13 +6,23 @@ const routes = require('./routers/routes');
 const api = require('./routers/api');
 const app = express();
 const port = process.env.PORT || 8080;
-const data = require('./controllers/object-builder');
 const shell = require('shelljs');
 const BodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+require('dotenv').config({
+    silent:true
+});
+
+const username = process.env.ST_USERNAME;
+const password = process.env.ST_PASSWORD;
 
 //initual data update
-shell.exec('./updateScript.sh').stdout;
+console.log('Attempting to connect with the following credentials');
+console.log('username: ' + username);
+console.log('password: ' + password);
+shell.exec('./updateScript.sh ' + username + ' ' + password).stdout;
+
+const data = require('./controllers/object-builder');
 
 //middleware
 app.use(cors());
@@ -38,6 +48,5 @@ app.listen(port, () => console.log(`Server started, listening on port ${port}!`)
 
 //update data every day
 setInterval(() => {
-    shell.exec('./updateScript.sh', {async: true}).stdout;
-
+    shell.exec('./updateScript.sh ' + username + ' ' + password, {async: true}).stdout;
 }, 1000*60*60*24);

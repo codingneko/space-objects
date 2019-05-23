@@ -1,0 +1,20 @@
+<h1>Subscribed Objects</h1>
+
+<% if(typeof data[0] != 'undefined'){%>
+    <ul class="list-group mt-4 mb-4">
+        <% for (var object of data) { %>
+          <li class="list-group-item">
+              <h4> <a href="/object/<%= object.id %>"><%= object.name %></a></h4>
+              <pre class="mb-3"> 
+                Type: <%= object.type.toLowerCase() %> 
+                International object designator: <%= object.id %>
+                Launch Year: <%= object.launchDate %>
+              </pre>
+          </li>
+        <% } %>
+    </ul>
+<%} else if(typeof user != 'undefined'){%>
+    <p class="card mt-4"> You have no subscriptions </p>
+<% } else {%>
+    <div class="card mt-4"> Please log in before trying to view your subscriptions <a href="/login" style="display: inline-block">log-in</a> </div>
+<% } %>

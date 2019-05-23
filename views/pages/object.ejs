@@ -1,43 +1,46 @@
-<a href="<%= referer %>" class="btn btn-primary mb-4">Back to catalog</a>
+<a href="/" class="btn btn-primary mb-4">Back to catalog</a>
 
 <% for (const object of data){ %>
-<div class="card">
-    <h4 class="ml-4 mt-4"> <%= object.name %> </h4>
-    <pre class="mb-3"> 
-        Type: <%= object.type.toLowerCase() %> 
-        International object designator: <%= object.id %>
+    <% if(typeof user != 'undefined') { %>
+        <a href="/user/<%= sub %>/<%=object.id%>" class="btn btn-primary mb-4"><%= sub %></a> 
+    <% } %>
+    <div class="card">
+        <h4 class="ml-4 mt-4"> <%= object.name %> </h4>
+        <pre class="mb-3"> 
+            Type: <%= object.type.toLowerCase() %> 
+            International object designator: <%= object.id %>
 
-        Year of launch: <%= object.launchDate %>
+            Year of launch: <%= object.launchDate %>
 
-        Orbital data:
-            --- inclination (degrees) <%= object.inclination %>
-            --- right ascension of the ascending node (degrees): <%= object.ascension %>
-            --- Argument of perigee (degrees): <%= object.perigee %>
-            --- Mean anomaly (degrees): <%= object.anomaly %>
-            --- Eccentricity (decimal point assumed): <%= object.eccentricity %>
-            --- B Star Drag: <%= object.drag %>
-        
-        Revolutions per day (mean motion): <%= object.motion %>
-        Revolution count at epoch: <%= object.revolution %>
-    </pre>
-    <div class="container">
-        <div class="card border-danger mb-3">
-            <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                    <button class="btn btn-danger btn-smbtn-danger" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <span id="toggle"> Show </span> TLE data 
-                </button>
-                </h2>
-            </div>
+            Orbital data:
+                --- inclination (degrees) <%= object.inclination %>
+                --- right ascension of the ascending node (degrees): <%= object.ascension %>
+                --- Argument of perigee (degrees): <%= object.perigee %>
+                --- Mean anomaly (degrees): <%= object.anomaly %>
+                --- Eccentricity (decimal point assumed): <%= object.eccentricity %>
+                --- B Star Drag: <%= object.drag %>
+            
+            Revolutions per day (mean motion): <%= object.motion %>
+            Revolution count at epoch: <%= object.revolution %>
+        </pre>
+        <div class="container">
+            <div class="card border-danger mb-3">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-danger btn-smbtn-danger" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <span id="toggle"> Show </span> TLE data 
+                    </button>
+                    </h2>
+                </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
-                <div class="card-body">
-                    <pre class="mt-4">
-                        <%= object.tle %>
-                    </pre>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                    <div class="card-body">
+                        <pre class="mt-4">
+                            <%= object.tle %>
+                        </pre>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <% } %>

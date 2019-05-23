@@ -1,12 +1,13 @@
 {
   "name": "space-objects",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.0",
   "description": "tracks objects in collision trajectory in space",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",

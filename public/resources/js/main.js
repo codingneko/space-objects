@@ -29,9 +29,6 @@ var app = {
     },
     setCookie: (key, value) => {
         document.cookie = key + '=' + value;
-    },
-    logout: () => {
-        document.cookie = 'user=';
     }
 }
 
@@ -199,8 +196,9 @@ $(document).ready(() => {
 
     if(typeof logoutButton != 'null'){
         logoutButton.addEventListener('click', (action) => {
+            action.preventDefault();
             app.logout();
-            console.log('logged out');
+            app.notify.warning('Refesh the page', 'Logged out.');
         });
     }
 });

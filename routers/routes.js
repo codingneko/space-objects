@@ -33,16 +33,19 @@ module.exports = function(router, data){
     
     router.get('/object/:iod', (req, res) => {
         var result = [];
+        let user = req.cookies.user;
         for (var object of data) {
             if (object.id == req.params.iod){
     
                 result.push(object);
             }
         }
+
         res.render('pages/object', {
             "data": result,
             "referer": req.header('Referer') || '/',
-            'user':  UserController.getCurrentUser(req.cookies.user).name
+            'user':  UserController.getCurrentUser(req.cookies.user).name,
+            'sub': UserController.checkSub({ userId: user, objectId: req.params.iod }) ? "unsubscribe" : "subscribe"
         });
     });
 
@@ -55,6 +58,20 @@ module.exports = function(router, data){
     router.get('/register', (req, res) => {
         res.render('pages/register', {
             'user':  UserController.getCurrentUser(req.cookies.user).name
+        });
+    });
+
+    router.get('/logout', (req, res) => {
+        res.clearCookie('user');
+        res.redirect('/');
+    });
+
+    router.get('/user/settings', (req, res) => {
+        let user = UserController.getCurrentUser(req.cookies.user);
+        res.render('pages/settings', {
+            "user":  user.name,
+            "userId": user.id,
+            "email": user.email
         });
     });
 
@@ -88,5 +105,45 @@ module.exports = function(router, data){
             console.log(result.user.name + 'logged in');
             res.json(result);
         }
+    });
+
+    router.post('/user/settings/handle', (req, res) => {
+        if(req.body.password != req.body.passwordConfirm){
+            res.redirect('/user/settings');
+        }
+
+        UserController.update({
+            userName: req.body.username,
+            password: req.body.password,
+            email: req.body.email,
+            userId: req.cookies.user
+        });
+
+        res.redirect('/');
+    });
+
+    router.get('/user/home', (req, res) =>  {
+        let user = UserController.getCurrentUser(req.cookies.user).id;
+        let objects = UserController.getObjects({
+            userId: user,
+            objects: data
+        });
+
+        let userName = UserController.getCurrentUser(req.cookies.user).name;
+
+        res.render('pages/home', {
+            'user': userName,
+            'data': objects
+        });
+    });
+
+    router.get('/user/:sub/:oid', (req, res) => {
+        UserController.subscribe({
+            userId: req.cookies.user,
+            objectId: req.params.oid,
+            sub: req.params.sub
+        });
+
+        res.redirect('/object/' + req.params.oid);
     });
 };
