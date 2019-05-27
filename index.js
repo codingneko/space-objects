@@ -5,13 +5,13 @@ const ejsLayouts = require('express-ejs-layouts');
 const routes = require('./routers/routes');
 const api = require('./routers/api');
 const app = express();
+require('dotenv').config({
+    silent:true
+});
 const port = process.env.PORT || 8080;
 const shell = require('shelljs');
 const BodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-require('dotenv').config({
-    silent:true
-});
 
 const username = process.env.ST_USERNAME;
 const password = process.env.ST_PASSWORD;
