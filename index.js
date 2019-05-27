@@ -17,11 +17,8 @@ const username = process.env.ST_USERNAME;
 const password = process.env.ST_PASSWORD;
 
 //initual data update
-console.log('Attempting to connect with the following credentials');
-console.log('username: ' + username);
-console.log('password: ' + password);
+console.log('Attempting to connect to space track');
 shell.exec('./updateScript.sh ' + username + ' ' + password).stdout;
-
 const data = require('./controllers/object-builder');
 
 //middleware
