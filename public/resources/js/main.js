@@ -190,15 +190,3 @@ function sha1 (msg) {
 
     return temp.toLowerCase();
 }
-
-$(document).ready(() => {
-    let logoutButton = document.getElementById('logout');
-
-    if(typeof logoutButton != 'null'){
-        logoutButton.addEventListener('click', (action) => {
-            action.preventDefault();
-            app.logout();
-            app.notify.warning('Refesh the page', 'Logged out.');
-        });
-    }
-});

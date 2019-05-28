@@ -18,6 +18,12 @@
     border: 1px solid #ffca28;
 }
 
+.subtitle{
+    border-bottom: solid 1px #CCC; display: block; font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
 .search-icon{
     background: url('https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/search.svg');
     background-size: 20px;

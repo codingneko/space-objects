@@ -31,7 +31,7 @@ function search (terms, array, options){
             var name = object.name.toLowerCase();
                 
             if(options.strict){
-                if(name.indexOf(terms) != -1){
+                if(name == terms){
                     result.push(object);
                 }
             }else{

@@ -5,7 +5,11 @@
         <a href="/user/<%= sub %>/<%=object.id%>" class="btn btn-primary mb-4"><%= sub %></a> 
     <% } %>
     <div class="card">
-        <h4 class="ml-4 mt-4"> <%= object.name %> </h4>
+        <h2 class="ml-4 mt-4" id="object-name"> <%= object.name %> </h2>
+        <p id="object-description" class="mb-3 mt-3 ml-4 mr-4">
+            <span class="subtitle">Object information</span> <br>
+        </p>
+        <span class="mb-3 mt-3 ml-4 mr-4 subtitle" id="TLE-data">Object data from TLE:</span>
         <pre class="mb-3"> 
             Type: <%= object.type.toLowerCase() %> 
             International object designator: <%= object.id %>
@@ -44,3 +48,5 @@
         </div>
     </div>
 <% } %>
+
+<script src="/resources/js/loadWiki.js"></script>

@@ -23,7 +23,6 @@
     "build": "./updateScript.sh",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "node-fetch": "^2.4.0",
     "update": "./updateScript.sh"
   },
   "repository": {
