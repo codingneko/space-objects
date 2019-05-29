@@ -23,7 +23,7 @@ document.getElementById('submit').addEventListener('click', (action) => {
             app.setCookie('user', data.user.id);
             window.location.href = '/';
         }else if(data.status === 403){
-            app.notify.error('try again', 'password was wrong');
+            app.notify.error('try again', 'user or password was wrong');
         }else if(data.status === 1){
             app.notify.error('something went wrong');
         }
