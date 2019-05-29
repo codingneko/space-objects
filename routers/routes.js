@@ -8,12 +8,13 @@ module.exports = function(router, data){
         let amount = req.query.c || 10;
         let query = req.query.q || '';
 
-        if(query.slice(0, 1) == '!'){
-            query = query.slice(1, query.length);
-            result = search(query || '', data, {strict: true});
-        }else{
-            result = search(query || '', data);
-        }
+        let searchOptions = {
+            byId: req.query.byId == 'on' ? true : false,
+            strict: req.query.strict == 'on' ? true : false,
+            type: req.query.objectType == '' || req.query.objectType == 'false' ? false : req.query.objectType
+        };
+
+        result = search(query || '', data, searchOptions);
 
         if (result.length == 0){
             result = 'no results found';
@@ -23,6 +24,7 @@ module.exports = function(router, data){
 
         res.render('pages/index', {
             'data' : result,
+            'searchOptions': searchOptions,
             'page': req.query.p || 1,
             'amount': amount,
             'query': req.query.q || '',

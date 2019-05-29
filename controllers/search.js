@@ -13,7 +13,8 @@ module.exports = search;
 function search (terms, array, options){
     options = options || {
         byId: false,
-        strict: false
+        strict: false,
+        objectType: false
     };
     var result = [];
     
@@ -29,18 +30,30 @@ function search (terms, array, options){
 
         for (const object of array) {
             var name = object.name.toLowerCase();
+            var type = object.type.toLowerCase();
                 
             if(options.strict){
-                if(name == terms){
+                if(options.type != false && type == options.type && name == terms){
                     result.push(object);
+                }else if(name == terms && !options.type){
+                    result.push(object)
                 }
             }else{
                 var found = 0;
-                for (const term of termsSplit) {
-                    if(name.indexOf(term) != -1){
-                        found++;
+                if(options.type != false && type == options.type){
+                    for (const term of termsSplit) {
+                        if(name.indexOf(term) != -1){
+                            found++;
+                        }
+                    }
+                }else if(!options.type){
+                    for (const term of termsSplit) {
+                        if(name.indexOf(term) != -1){
+                            found++;
+                        }
                     }
                 }
+                
                 if(found > termsSplit.length-1)result.push(object);
             }
         }

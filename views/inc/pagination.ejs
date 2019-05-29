@@ -1,6 +1,6 @@
 <% 
   function buildUrl(number){
-    let base = '?q=' + query + '&c=' + amount + '&p=';
+    let base = '?q=' + query + '&c=' + amount + '&strict=' + searchOptions.strict + '&byId=' + searchOptions.byId + '&objectType=' + searchOptions.type + '&p=';
 
     return base + (Number(page) + (number));
   };
@@ -20,7 +20,7 @@
         <% } %>
         <li class="page-item"><a class="page-link" href="<%= buildUrl(-1) %>"><%= Number(page)-1 %></a></li>
     <% } %>
-    <li class="page-item active"><a class="page-link" href="<%= page %>"><%= page %></a></li>
+    <li class="page-item active"><span class="page-link" href="<%= page %>"><%= page %></span></li>
     <li class="page-item"><a class="page-link" href="<%= buildUrl(+1) %>"><%= Number(page)+1 %></a></li>
     <li class="page-item"><a class="page-link" href="<%= buildUrl(+2) %>"><%= Number(page)+2 %></a></li>
     <li class="page-item">

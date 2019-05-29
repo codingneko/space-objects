@@ -5,4 +5,22 @@
             <i class="fas fa-search text-grey search-icon" aria-hidden="true"></i>
         </button>
     </div>
+    <div class="input-group card mt-3">
+        <a class="btn" data-toggle="collapse" href="#advanced" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Advanced search options
+        </a>
+        <div class="collapse mt-3 mb-3 ml-3" id="advanced">
+            <input type="checkbox" name="byId" id="byIdCheckbox"> <label for="byIdCheckbox">Search by ID</label><br>
+            <input type="checkbox" name="strict" id="StrictCheckbox"> <label for="StrictCheckbox">Strict search</label><br><br>
+            <label for="object-type">Object type:</label><br>
+            <select name="objectType" id="object-type">
+                <option value="">Any</option>
+                <option value="payload">Payload</option>
+                <option value="rocket body">Rocket Body</option>
+                <option value="debris">Debris</option>
+            </select><br><br>
+            <label for="posts-per-page">Posts per page:</label><br>
+            <input type="number" name="c" id="posts-per-page">
+        </div>
+    </div>
 </form>
