@@ -14,11 +14,11 @@ for (var object of data) {
     object = TLE.parse(tle);
     object.type = type;
     object.tle = tle;
-    objectArray.push(object);
-
     let craftedDate = object.id.slice(0,2);
     craftedDate = craftedDate > 57 ? '19' + craftedDate: '20' + craftedDate;
     object.launchDate = craftedDate;
+    object.intldes = object.launchDate + '-' + object.id.slice(2, object.id.length);
+    objectArray.push(object);
 }
 
 module.exports = objectArray;
