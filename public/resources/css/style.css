@@ -51,3 +51,22 @@
 .notification-container{
     margin-top:65px;
 }
+
+.comment-header{
+    padding: 10px;
+    background: #EEE;
+    display: flex;
+}
+
+.comment-content{
+    padding: 10px;
+}
+
+.comment-uname{
+    display: block;
+    flex: 1;
+}
+
+.comment-date{
+    display: block;
+}

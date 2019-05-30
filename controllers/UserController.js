@@ -10,7 +10,8 @@ const db = lowdb(adapter);
 
 db.defaults({
     users: [],
-    subscriptions: []
+    subscriptions: [],
+    comments: []
 }).write();
 
 module.exports.save = function (data) {
@@ -53,6 +54,32 @@ module.exports.login = function(data) {
     }
 
     return user;;
+}
+
+module.exports.comment = (data) => {
+    let id = shortid.generate();
+    let comment = db.get('comments').push({
+        id: id,
+        date: new Date().toDateString(),
+        content: data.content,
+        user: data.uid,
+        objectId: data.oid
+    }).find({id: id}).write();
+    
+    return comment;
+}
+
+module.exports.readComments = (data) => {
+
+    let comments = db.get('comments').filter({
+        objectId: data.oid
+    }).value();
+
+    for(comment of comments){
+        if(typeof comment != 'undefined' ) comment.userName = db.get('users').find({id: comment.user}).value().name;
+    }
+    
+    return comments;
 }
 
 module.exports.getCurrentUser = function(data) {

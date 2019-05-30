@@ -43,12 +43,29 @@ module.exports = function(router, data){
             }
         }
 
+        let comments = UserController.readComments({
+            oid: req.params.iod
+        });
+        
         res.render('pages/object', {
             "data": result,
             "referer": req.header('Referer') || '/',
             'user':  UserController.getCurrentUser(req.cookies.user).name,
-            'sub': UserController.checkSub({ userId: user, objectId: req.params.iod }) ? "unsubscribe" : "subscribe"
+            'sub': UserController.checkSub({ userId: user, objectId: req.params.iod }) ? "unsubscribe" : "subscribe",
+            'comments': comments
         });
+    });
+
+    router.post('/object/:oid/comment', (req, res) => {
+        let data = {
+            content: req.body.content,
+            oid: req.params.oid,
+            uid: req.cookies.user
+        }
+
+        UserController.comment(data);
+
+        res.redirect('/object/' + data.oid);
     });
 
     router.get('/login', (req, res) => {
