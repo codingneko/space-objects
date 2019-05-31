@@ -76,7 +76,14 @@ module.exports.readComments = (data) => {
     }).value();
 
     for(comment of comments){
-        if(typeof comment != 'undefined' ) comment.userName = db.get('users').find({id: comment.user}).value().name;
+        if(typeof comment != 'undefined' ){
+            if(typeof db.get('users').find({id: comment.user}).value() != 'undefined'){
+                comment.userName = db.get('users').find({id: comment.user}).value().name;
+            }else{
+                comment.userName = "Anonymous";
+                comment.user = 0;
+            }
+        };
     }
     
     return comments;
