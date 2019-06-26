@@ -11,7 +11,7 @@ module.exports = function(router, data){
         let searchOptions = {
             byId: req.query.byId == 'on' ? true : false,
             strict: req.query.strict == 'on' ? true : false,
-            type: req.query.objectType != 'payload' || req.query.objectType != 'rocket+body' || req.query.objectType != 'debris' ? false : req.query.objectType
+            objectType: req.query.objectType != 'payload' || req.query.objectType != 'rocket+body' || req.query.objectType != 'debris' ? false : req.query.objectType
         };
 
         result = search(query || '', data, searchOptions);
