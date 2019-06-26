@@ -14,7 +14,7 @@ function search (terms, array, options){
     options = options || {
         byId: false,
         strict: false,
-        objectType: false
+        type: false
     };
     var result = [];
     
