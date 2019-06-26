@@ -8,6 +8,7 @@ if(title.lastIndexOf('R/B') != -1){
     title = title.split('(')[0].toLowerCase();
     title = title.split('/')[0].toLowerCase();
     title = title.charAt(0).toUpperCase() + title.slice(1);
+    title = title.replace(" ", "_");
     
     fetch('https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles='+title, {
         method: 'GET',
