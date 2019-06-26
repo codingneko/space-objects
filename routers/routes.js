@@ -11,7 +11,7 @@ module.exports = function(router, data){
         let searchOptions = {
             byId: req.query.byId == 'on' ? true : false,
             strict: req.query.strict == 'on' ? true : false,
-            type: req.query.objectType == '' || req.query.objectType == 'false' ? false : req.query.objectType
+            type: req.query.objectType == '' || req.query.objectType == 'undefined' || req.query.objectType == false ? false : req.query.objectType
         };
 
         result = search(query || '', data, searchOptions);
