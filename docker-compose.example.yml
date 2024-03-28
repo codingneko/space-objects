@@ -13,4 +13,5 @@ services:
       - ST_PASSWORD=
 
 volumes:
-  - db
+  db:
+    external: true
