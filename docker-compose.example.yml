@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - "80:8080"
+    volumes:
+      - data:~/space-objects/db
     environment:
       - ST_USERNAME=
       - ST_PASSWORD=
