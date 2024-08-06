@@ -12,7 +12,7 @@
     "ejs": "^3.1.10",
     "express-ejs-layouts": "^2.5.0",
     "lowdb": "^1.0.0",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "shortid": "^2.2.14",
     "tle": "^1.2.3"
   },
