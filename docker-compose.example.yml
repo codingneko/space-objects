@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  space-track:
+    build: .
+    restart: always
+    volumes:
+      - ./data:/home/node/space-objects/data
+    ports:
+      - "8086:8080"
+    environment:
+      - ST_USERNAME=
+      - ST_PASSWORD=
