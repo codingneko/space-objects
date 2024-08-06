@@ -66,3 +66,6 @@ data/data.json
 
 #cookie file
 cookies.txt
+
+#docker-compose.yml
+docker-compose.yml
