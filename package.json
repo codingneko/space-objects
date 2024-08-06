@@ -8,8 +8,8 @@
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
-    "ejs": "^2.6.1",
     "express": "^4.19.2",
+    "ejs": "^3.1.10",
     "express-ejs-layouts": "^2.5.0",
     "lowdb": "^1.0.0",
     "shelljs": "^0.8.3",
@@ -17,7 +17,7 @@
     "tle": "^1.2.3"
   },
   "devDependencies": {
-    "nodemon": "^1.18.11"
+    "nodemon": "^3.1.3"
   },
   "scripts": {
     "build": "./updateScript.sh",
